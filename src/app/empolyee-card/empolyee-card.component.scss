@@ -1,0 +1,15 @@
+.card {
+  margin-bottom: 123px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.card-number {
+  grid-column: 1/-1;
+}
+
+.card-button {
+  grid-column: 1/-1;
+  max-width: fit-content;
+}
