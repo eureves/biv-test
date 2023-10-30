@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { NewEmployeeComponent } from '../new-employee/new-employee.component';
-import { EmployeesComponent } from '../employees/employees.component';
+import { NewEmployeeComponent } from '@app/components/new-employee/new-employee.component';
+import { EmployeesComponent } from '@app/components/employees/employees.component';
 
 const routeConfig: Routes = [
   {

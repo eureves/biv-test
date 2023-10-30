@@ -1,5 +1,5 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
-import { IEmployee } from './types/employee';
+import { IEmployee } from '@app/types/employee';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,8 @@ export class EmployeesService {
     }
   ])
 
-  constructor() { }
+  constructor() {
+  }
 
   getAllEmployees(): WritableSignal<IEmployee[]> {
     return this.employees
