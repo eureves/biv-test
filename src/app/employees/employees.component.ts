@@ -1,29 +1,29 @@
 import { Component, WritableSignal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IUser } from '../types/user';
-import { UsersService } from '../users.service';
+import { IEmployee } from '../types/employee';
+import { EmployeesService } from '../employees.service';
 import { PageTemplateComponent } from '../page-template/page-template.component';
 import { EmpolyeeCardComponent } from '../empolyee-card/empolyee-card.component';
 
 @Component({
-  selector: 'app-users',
+  selector: 'app-employees',
   standalone: true,
   imports: [CommonModule, PageTemplateComponent, EmpolyeeCardComponent],
   template: `
   <app-page-template>
     <section class="empolyees-section">
-      <app-empolyee-card *ngFor="let employee of users(); let i = index" [employee]="employee" [index]="i"/>
+      <app-empolyee-card *ngFor="let employee of employees(); let i = index" [employee]="employee" [index]="i"/>
     </section>
   </app-page-template>
   `,
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['employees.component.scss']
 })
-export class UsersComponent {
-  users: WritableSignal<IUser[]>
-  userService: UsersService = inject(UsersService)
+export class EmployeesComponent {
+  employees: WritableSignal<IEmployee[]>
+  employeesService: EmployeesService = inject(EmployeesService)
 
   constructor() {
-    this.users = this.userService.getAllUsers()
+    this.employees = this.employeesService.getAllEmployees()
   }
 
 }

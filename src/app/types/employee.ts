@@ -1,4 +1,4 @@
-export interface IUser {
+export interface IEmployee {
   id: string,
   lastname: string,
   firstname: string,

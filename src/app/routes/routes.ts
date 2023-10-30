@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { NewUserComponent } from '../new-user/new-user.component';
-import { UsersComponent } from '../users/users.component';
+import { NewEmployeeComponent } from '../new-employee/new-employee.component';
+import { EmployeesComponent } from '../employees/employees.component';
 
 const routeConfig: Routes = [
   {
@@ -10,7 +10,7 @@ const routeConfig: Routes = [
   },
   {
     path: 'employees/new',
-    component: NewUserComponent,
+    component: NewEmployeeComponent,
     title: 'СТРАНИЦА 1',
     data: {
       pageTitle: 'Добавить сотрудника'
@@ -18,7 +18,7 @@ const routeConfig: Routes = [
   },
   {
     path: 'employees',
-    component: UsersComponent,
+    component: EmployeesComponent,
     title: 'СТРАНИЦА 2',
     data: {
       pageTitle: 'Список сотрудников'

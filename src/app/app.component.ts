@@ -10,7 +10,7 @@ import { routesForTabs } from './routes/routes'
   imports: [MatTabsModule, CommonModule, RouterModule],
   template: `
   <main>
-    <nav mat-tab-nav-bar backgroundColor="primary" mat-stretch-tabs="false" [tabPanel]="tabPanel">
+    <nav mat-tab-nav-bar class="navigation" backgroundColor="primary" mat-stretch-tabs="false" [tabPanel]="tabPanel">
       <a mat-tab-link *ngFor="let link of links"
         [routerLink]="link.path"
         routerLinkActive #rla="routerLinkActive"
@@ -27,7 +27,7 @@ import { routesForTabs } from './routes/routes'
     </section>
   </main>
   `,
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['app.component.scss']
 })
 export class AppComponent {
   title = 'biv-test';

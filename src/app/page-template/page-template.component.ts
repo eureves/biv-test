@@ -10,7 +10,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
     <h1 class="title">{{title}}</h1>
     <ng-content/>
   `,
-  styleUrls: ['./page-template.component.scss']
+  styleUrls: ['page-template.component.scss']
 })
 export class PageTemplateComponent {
   route: ActivatedRoute = inject(ActivatedRoute)

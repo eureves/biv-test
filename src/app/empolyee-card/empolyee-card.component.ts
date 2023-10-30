@@ -1,7 +1,7 @@
 import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IUser } from '../types/user';
-import { UsersService } from '../users.service';
+import { IEmployee } from '../types/employee';
+import { EmployeesService } from '../employees.service';
 import { MatButtonModule } from '@angular/material/button'
 import { MatGridListModule } from '@angular/material/grid-list'
 
@@ -12,7 +12,7 @@ import { MatGridListModule } from '@angular/material/grid-list'
   template: `
   <div class="card">
     <p class="card-number">
-      СОТРУДНИК № {{index}}
+      Сотрудник № {{index}}
     </p>
       <p>Фамилия</p> 
       <p>{{employee.lastname}}</p>
@@ -23,20 +23,20 @@ import { MatGridListModule } from '@angular/material/grid-list'
       <button 
         class="card-button"
         mat-raised-button color="primary" 
-        (click)="deleteUser(employee.id)"
+        (click)="deleteEmployee(employee.id)"
       >
         УДАЛИТЬ СОТРУДНИКА
     </button>
   </div>
   `,
-  styleUrls: ['./empolyee-card.component.scss']
+  styleUrls: ['empolyee-card.component.scss']
 })
 export class EmpolyeeCardComponent {
-  @Input() employee!: IUser
+  @Input() employee!: IEmployee
   @Input() index!: number
-  userService: UsersService = inject(UsersService)
+  employeesService: EmployeesService = inject(EmployeesService)
 
-  deleteUser(id: string) {
-    this.userService.removeUserById(id)
+  deleteEmployee(id: string) {
+    this.employeesService.removeEmployeeById(id)
   }
 }
