@@ -50,8 +50,6 @@ export class NewEmployeeComponent {
   })
 
   submitNewEmployee() {
-    console.log(this.newEmployeeForm);
-
     this.employeesService.addEmployee(
       this.newEmployeeForm.value.lastname!,
       this.newEmployeeForm.value.firstname!,
