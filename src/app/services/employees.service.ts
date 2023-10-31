@@ -1,11 +1,12 @@
-import { Injectable, WritableSignal, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { IEmployee } from '@app/types/employee';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeesService {
-  private employees = signal<IEmployee[]>([
+  private employeesObj = new BehaviorSubject<IEmployee[]>([
     {
       id: '0',
       lastname: 'Иванов',
@@ -14,15 +15,10 @@ export class EmployeesService {
     }
   ])
 
-  constructor() {
-  }
-
-  getAllEmployees(): WritableSignal<IEmployee[]> {
-    return this.employees
-  }
+  public employees$ = this.employeesObj.asObservable()
 
   addEmployee(lastname: string, firstname: string, surname: string): void {
-    this.employees.update(current => [...current, {
+    this.employeesObj.next([...this.employeesObj.getValue(), {
       id: crypto.randomUUID(),
       lastname,
       firstname,
@@ -31,6 +27,6 @@ export class EmployeesService {
   }
 
   removeEmployeeById(id: string): void {
-    this.employees.update(current => current.filter(el => el.id !== id))
+    this.employeesObj.next(this.employeesObj.getValue().filter(el => el.id !== id))
   }
 }
