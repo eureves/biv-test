@@ -1,10 +1,10 @@
-import { Component, WritableSignal, inject } from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IEmployee } from '@app/types/employee';
 import { EmployeesService } from '@app/services/employees.service';
 import { PageTemplateComponent } from '@app/components/page-template/page-template.component';
 import { EmpolyeeCardComponent } from '@app/components/empolyee-card/empolyee-card.component';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-employees',
@@ -19,11 +19,15 @@ import { Observable, Subscription } from 'rxjs';
   `,
   styleUrls: ['employees.component.scss']
 })
-export class EmployeesComponent {
+export class EmployeesComponent implements OnDestroy{
   employees!: IEmployee[]
-  employeesService: EmployeesService = inject(EmployeesService)
+  employeesSub: Subscription
 
-  constructor() {
-    this.employeesService.employees$.subscribe(next => this.employees = next)
+  constructor(employeesService: EmployeesService) {
+    this.employeesSub = employeesService.employees$.subscribe(next => this.employees = next)
+  }
+
+  ngOnDestroy() {
+    this.employeesSub.unsubscribe()
   }
 }

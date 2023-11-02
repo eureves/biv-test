@@ -6,6 +6,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { EmployeesService } from '@app/services/employees.service';
 import { PageTemplateComponent } from '@app/components/page-template/page-template.component';
+import {IEmployee} from "@app/types/employee";
 
 @Component({
   selector: 'app-new-employee',
@@ -50,12 +51,7 @@ export class NewEmployeeComponent {
   })
 
   submitNewEmployee() {
-    this.employeesService.addEmployee(
-      this.newEmployeeForm.value.lastname!,
-      this.newEmployeeForm.value.firstname!,
-      this.newEmployeeForm.value.surname!,
-    )
-
+    if (this.newEmployeeForm.valid) this.employeesService.addEmployee(this.newEmployeeForm.value as NonNullable<IEmployee>)
     this.newEmployeeForm.reset()
   }
 }
